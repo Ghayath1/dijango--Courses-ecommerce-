@@ -1,0 +1,22 @@
+<h2> Product Detail</h2>
+<a href="{% url 'products:edit_product' product.id %}"> Edit Product</a>
+<a href="{% url 'products:delete_product' product.id %}"> Delete Product</a>
+
+<hr>
+<h3>{{ product}}</h3>
+<p>{{product.desc}}</p>
+<p>{{product.quantity}}</p>
+<p>{{ product.price}}</p>
+
+
+<img src="{{product.image.url}}" style="width: 200px; ;" alt="">
+
+<hr>
+<h4> Reviews </h4>
+
+{% for review in product_reviews %}
+ <p>{{review.user}} - {{review.rate}} - {{review.review}} - {{ review.created_at}}</p>
+{% empty %}
+ <p>No Reviews yet</p>
+
+{% endfor %}
